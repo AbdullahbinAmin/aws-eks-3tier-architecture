@@ -45,5 +45,12 @@ kubectl get svc frontend
 ```
 *(Output: `ab4f44f9b...eu-north-1.elb.amazonaws.com`)*
 
+### 🚨 Troubleshooting: `DNS_PROBE_FINISHED_NXDOMAIN`
+If you immediately copy the Load Balancer URL into your browser and receive a `This site can't be reached (NXDOMAIN)` error, **do not panic!** 
+
+AWS Load Balancers take approximately **3 to 5 minutes** to propagate through global DNS servers after they are first created. During this waiting period, the URL simply does not exist on the internet yet. 
+
+**The Fix:** Simply wait 5 minutes, grab a cup of tea, and refresh the browser!
+
 ---
 *Next Step: [SSL Offloading & Custom Domain](07-ssl-and-domain.md)*
