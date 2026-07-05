@@ -49,12 +49,13 @@ To ensure this project is fully reproducible, every single step from creating th
 Please follow these guides in order:
 
 1. [Setting Up AWS & IAM Users](docs/01-aws-setup.md)
-2. [Configuring IAM Roles & Policies](docs/02-iam-roles.md)
-3. [Provisioning the Workstation (EC2)](docs/03-ec2-workstation.md)
-4. [Containerization & AWS ECR](docs/04-docker-ecr.md)
-5. [Deploying the EKS Cluster](docs/05-eks-cluster.md)
-6. [Applying Kubernetes Manifests](docs/06-kubernetes-deployment.md)
-7. [SSL Offloading & Custom Domain](docs/07-ssl-and-domain.md)
+2. [VPC & Networking Configuration](docs/01b-vpc-networking.md)
+3. [Configuring IAM Roles & Policies](docs/02-iam-roles.md)
+4. [Provisioning the Workstation (EC2)](docs/03-ec2-workstation.md)
+5. [Containerization & AWS ECR](docs/04-docker-ecr.md)
+6. [Deploying the EKS Cluster](docs/05-eks-cluster.md)
+7. [Applying Kubernetes Manifests](docs/06-kubernetes-deployment.md)
+8. [SSL Offloading & Custom Domain](docs/07-ssl-and-domain.md)
 
 ---
 
