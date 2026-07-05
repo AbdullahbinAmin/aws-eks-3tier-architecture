@@ -29,19 +29,24 @@ We updated our Ubuntu workstation `kubeconfig` to communicate with the cluster:
 aws eks update-kubeconfig --region eu-north-1 --name my-eks-cluster
 ```
 
-### 🚨 Troubleshooting: The `kubectl` Timeout Error
-If you run `kubectl get nodes` and receive an `i/o timeout` error (e.g., `dial tcp ...:443: i/o timeout`), it means your Ubuntu Workstation is being blocked by the EKS Cluster's firewall!
+### 🚨 Troubleshooting: Security Groups & `i/o timeout`
+When creating Node Groups manually from the console, the Nodes and the EKS Cluster might not have permission to talk to each other, resulting in nodes not joining, or `kubectl` timing out (`dial tcp ...:443: i/o timeout`).
 
-**The Fix:**
+**The Fix (Bi-Directional Security Group Rules):**
 1. Open the AWS Console and go to **EC2** -> **Security Groups**.
-2. Find the Security Group created for your EKS Cluster (the description will say something like *EKS created security group applied to ENI that is attached to EKS Control Plane node*).
-3. Select it and click **Edit inbound rules**.
-4. Add a new rule:
-   - **Type:** `HTTPS` (Port `443`)
-   - **Source:** Custom -> Select the Security Group of your Ubuntu Workstation (or `0.0.0.0/0` for universal access).
-5. Save the rule.
+2. Find the **Cluster Security Group** (its description usually says *EKS created security group applied to ENI...*).
+3. Find the **Node Security Group** (the one attached to your `t3.small` worker nodes).
 
-Run `kubectl get nodes` again, and the error will instantly disappear, showing your `t3.small` node in the `Ready` state!
+**Rule 1: Allow Cluster to talk to Nodes**
+- Edit the Inbound rules of the **Node Security Group**.
+- Add Rule: **Type:** `All Traffic` | **Source:** Select the *Cluster Security Group*.
+
+**Rule 2: Allow Nodes & Workstation to talk to Cluster**
+- Edit the Inbound rules of the **Cluster Security Group**.
+- Add Rule: **Type:** `HTTPS (443)` | **Source:** Select the *Node Security Group*.
+- Add Rule: **Type:** `HTTPS (443)` | **Source:** Select the *Workstation Security Group* (or `0.0.0.0/0` to let your terminal's `kubectl` connect without timing out).
+
+Save all rules. Run `kubectl get nodes` again, and your nodes will instantly show up in the `Ready` state!
 
 ---
 *Next Step: [Applying Kubernetes Manifests](06-kubernetes-deployment.md)*
