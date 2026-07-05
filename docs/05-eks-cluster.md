@@ -48,5 +48,23 @@ When creating Node Groups manually from the console, the Nodes and the EKS Clust
 
 Save all rules. Run `kubectl get nodes` again, and your nodes will instantly show up in the `Ready` state!
 
+### 🚨 Troubleshooting 2: The `provide credentials` Error
+If you run `kubectl get nodes` and receive an error saying `the server has asked for the client to provide credentials`, this is an AWS IAM Identity mismatch.
+
+By default, an EKS Cluster only allows the exact AWS User who created it to access the cluster. If you created the cluster in the AWS Console using your `devops-engineer` IAM user, but your Ubuntu server is trying to access it using its attached EC2 IAM Role, the cluster will reject the connection because it doesn't recognize the EC2 Role!
+
+**The Fix:**
+You must configure your Ubuntu server's AWS CLI to authenticate as the `devops-engineer` user.
+1. In your MobaXterm terminal, run:
+   ```bash
+   aws configure
+   ```
+2. Enter your `devops-engineer` **AWS Access Key ID**.
+3. Enter your `devops-engineer` **AWS Secret Access Key**.
+4. Default region name: `eu-north-1`
+5. Default output format: `json`
+
+Run `aws eks update-kubeconfig --region eu-north-1 --name my-eks-cluster` again, then run `kubectl get nodes`. You will now be successfully authenticated!
+
 ---
 *Next Step: [Applying Kubernetes Manifests](06-kubernetes-deployment.md)*
