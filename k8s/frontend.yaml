@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: 857184531197.dkr.ecr.eu-north-1.amazonaws.com/frontend-microservice:latest
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:eu-north-1:857184531197:certificate/c6976e26-4eaa-4374-98ef-2a0aadc9aad1"
+    service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "443"
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+    - name: https
+      port: 443
+      targetPort: 80
+  selector:
+    app: frontend
