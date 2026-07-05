@@ -40,4 +40,4 @@ sudo mv /tmp/eksctl /usr/local/bin
 ```
 
 ---
-*Next Step: [Containerization & AWS ECR](04-docker-ecr.md)*
+*Next Step: [Cloning the Repository to the Server](03b-git-clone.md)*
