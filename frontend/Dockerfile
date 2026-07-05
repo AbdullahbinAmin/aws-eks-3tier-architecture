@@ -16,11 +16,16 @@ COPY --from=builder /usr/src/app/dist /usr/share/nginx/html
 RUN echo -e 'server {\n\
     listen 80;\n\
     location / {\n\
-    root   /usr/share/nginx/html;\n\
-    index  index.html index.htm;\n\
-    try_files $uri $uri/ /index.html;\n\
+        root   /usr/share/nginx/html;\n\
+        index  index.html index.htm;\n\
+        try_files $uri $uri/ /index.html;\n\
     }\n\
-    }' > /etc/nginx/conf.d/default.conf
+    location /api/ {\n\
+        proxy_pass http://backend:5000/api/;\n\
+        proxy_set_header Host $host;\n\
+        proxy_set_header X-Real-IP $remote_addr;\n\
+    }\n\
+}' > /etc/nginx/conf.d/default.conf
 
 # Expose port 80
 EXPOSE 80
