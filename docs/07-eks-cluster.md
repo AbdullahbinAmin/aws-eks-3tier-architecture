@@ -7,7 +7,9 @@ This phase was the most complex part of the architecture, requiring us to overco
 2. **Name:** `my-eks-cluster`
 3. **Role:** Selected the `eks-cluster-role`.
 4. **Networking:** Kept the default VPC but ensured **Public Access** was enabled.
-5. Waited ~15 minutes for the cluster control plane to provision.
+5. **Security Groups (The Shortcut):** We explicitly selected our Ubuntu Workstation's Security Group (`eks-server-sg`) and the Default VPC Security Group under the *Additional security groups* dropdown. 
+   *(Note: This is a clever shortcut! By doing this, we forced the EKS Control Plane to share the exact same firewall rules as our workstation and node groups. This completely prevents the dreaded `kubectl i/o timeout` error without needing to manually write bi-directional rules later!)*
+6. Waited ~15 minutes for the cluster control plane to provision.
 
 ## 2. The `t3.micro` Pod Limit Challenge
 When creating a Node Group, we initially wanted to use `t3.micro` (Free Tier). However, AWS hardcodes Elastic Network Interface (ENI) limits. A `t3.micro` allows a maximum of exactly **4 pods**. Since Kubernetes uses fundamental system pods (`aws-node`, `kube-proxy`), we had 0 slots left for our application.
