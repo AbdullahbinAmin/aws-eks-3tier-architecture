@@ -45,6 +45,11 @@ To create the pipeline in the AWS Console, follow these exact steps:
 
 The pipeline will immediately run and **fail**. Do not panic! It failed because the CodeBuild Service Role doesn't have permissions to access ECR or EKS yet.
 
+> [!WARNING]  
+> **AWS New Account Restriction (`AccountLimitExceededException`)**  
+> If your Build stage fails with the error: *`Cannot have more than 0 builds in queue for the account`*, this means AWS has temporarily blocked your account from using CodeBuild to prevent crypto-mining spam (a common restriction for new AWS accounts).  
+> **To fix this:** Go to **Service Quotas** in the AWS Console -> AWS services -> AWS CodeBuild -> **Concurrent builds**. Click "Request quota increase" and request an increase from `0` to `1`. AWS Support usually approves this within 24 hours.
+
 ## 3. Configuring Permissions (The Fix)
 For CodeBuild to push images and run `kubectl`, we must give it IAM permissions and EKS permissions.
 
