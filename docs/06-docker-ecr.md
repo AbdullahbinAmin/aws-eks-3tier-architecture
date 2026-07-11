@@ -1,4 +1,4 @@
-# Phase 4: Containerization & AWS ECR
+# Phase 6: Containerization & AWS ECR
 
 With our workstation ready, we needed to package our Backend (Node.js) and Frontend (React/Nginx) code into Docker containers and push them to a private AWS repository.
 

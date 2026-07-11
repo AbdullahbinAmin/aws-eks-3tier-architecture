@@ -1,4 +1,4 @@
-# Phase 5: Deploying the EKS Cluster
+# Phase 7: Deploying the EKS Cluster
 
 This phase was the most complex part of the architecture, requiring us to overcome AWS Free Tier networking limitations and strict Security Group firewalls.
 

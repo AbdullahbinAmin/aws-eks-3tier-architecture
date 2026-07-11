@@ -1,4 +1,4 @@
-# Phase 2: IAM Roles & Policies Configuration
+# Phase 3: IAM Roles & Policies Configuration
 
 EKS and EC2 require specific roles to interact with each other and other AWS services. Here is the exact step-by-step process used to create these roles in the AWS Console.
 

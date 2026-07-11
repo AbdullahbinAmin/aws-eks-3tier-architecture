@@ -1,4 +1,4 @@
-# Phase 6: Kubernetes Deployment
+# Phase 8: Kubernetes Deployment
 
 With our worker node running, we deployed the three tiers of our application using YAML manifests.
 

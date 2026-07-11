@@ -1,4 +1,4 @@
-# Phase 1b: VPC & Networking Configuration
+# Phase 2: VPC & Networking Configuration
 
 Before launching EC2 instances or an EKS Cluster, it is critical to understand the networking foundation. For this project, we utilized the **Default VPC** provided by AWS, which is pre-configured for high availability.
 

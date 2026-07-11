@@ -1,4 +1,4 @@
-# Phase 3: Provisioning the Workstation (EC2)
+# Phase 4: Provisioning the Workstation (EC2)
 
 Instead of installing AWS tools on a local Windows machine, we provisioned an Ubuntu Server on AWS to act as our centralized "Jumpbox" or DevOps Workstation. We accessed this workstation using **MobaXterm**.
 

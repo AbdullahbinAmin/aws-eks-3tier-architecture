@@ -1,4 +1,4 @@
-# Phase 3b: Cloning the Repository to the Server
+# Phase 5: Cloning the Repository to the Server
 
 Before we can build our Docker images, we need to get our application code onto the Ubuntu Workstation. We do this by cloning our GitHub repository directly to the server.
 

@@ -1,4 +1,4 @@
-# Phase 7: SSL Offloading & Custom Domain
+# Phase 9: SSL Offloading & Custom Domain
 
 To make the application production-ready, we mapped a free custom domain (`learning.dynv6.net`) to our Load Balancer and secured it with HTTPS.
 

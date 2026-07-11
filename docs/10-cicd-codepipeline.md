@@ -1,4 +1,4 @@
-# Phase 8: Automating CI/CD with AWS CodePipeline
+# Phase 10: Automating CI/CD with AWS CodePipeline
 
 Deploying infrastructure manually is a great learning experience, but in a true enterprise environment, deployments must be automated. We implemented a continuous integration and continuous deployment (CI/CD) pipeline using AWS CodePipeline.
 
