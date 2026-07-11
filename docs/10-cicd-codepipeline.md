@@ -23,7 +23,7 @@ To create the pipeline in the AWS Console, follow these exact steps:
 2. **Choose creation option:** Select **Build custom pipeline** and click Next.
 3. **Name:** `3tier-eks-pipeline`
 4. Select **New service role** (CodePipeline will auto-generate an IAM role for you).
-5. **Source Provider:** Choose **GitHub (Version 2)**.
+5. **Source Provider:** Choose **GitHub (via GitHub App)**.
 6. Click **Connect to GitHub**. This will open a popup asking you to authorize AWS Connector in your GitHub account. Select your `aws-eks-3tier-architecture` repository and click Install.
 7. Select your repository name and the `main` branch. 
 8. Make sure **Start the pipeline on source code change** is checked.
