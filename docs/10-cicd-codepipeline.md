@@ -70,3 +70,6 @@ Now that the permissions are fixed, go back to your CodePipeline and click **Rel
 The pipeline will successfully pull your code, build the Docker images, push them to ECR, authenticate with your EKS cluster, and deploy your new frontend and backend pods automatically!
 
 Whenever you make a change in your local VS Code and run `git push`, this entire process will trigger with zero manual intervention.
+
+---
+*Next Step: [The Interview Guide (End-to-End Flow)](11-interview-guide.md)*

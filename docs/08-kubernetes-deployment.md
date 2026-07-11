@@ -52,5 +52,13 @@ AWS Load Balancers take approximately **3 to 5 minutes** to propagate through gl
 
 **The Fix:** Simply wait 5 minutes, grab a cup of tea, and refresh the browser!
 
+### 🚨 Troubleshooting 2: `Could not connect to backend service`
+If the frontend loads perfectly but throws errors saying it cannot connect to the backend (or "Failed to add user"), it means the Nginx reverse proxy is missing its routing configuration.
+
+**The Fix:**
+Because the React app runs in the user's browser, it cannot communicate directly with the internal Kubernetes `backend` service. We must configure the Nginx web server to intercept API calls and forward them into the cluster.
+
+Ensure your `frontend/Dockerfile` has a `location /api/` block inside its Nginx configuration that points to `http://backend:5000/api/`. Once updated, rebuild the Docker image and restart the Kubernetes pods!
+
 ---
-*Next Step: [SSL Offloading & Custom Domain](07-ssl-and-domain.md)*
+*Next Step: [SSL Offloading & Custom Domain](09-ssl-and-domain.md)*

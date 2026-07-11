@@ -48,17 +48,17 @@ To ensure this project is fully reproducible, every single step from creating th
 
 Please follow these guides in order:
 
-1. [Setting Up AWS & IAM Users](docs/01-aws-setup.md)
-2. [VPC & Networking Configuration](docs/01b-vpc-networking.md)
-3. [Configuring IAM Roles & Policies](docs/02-iam-roles.md)
-4. [Provisioning the Workstation (EC2)](docs/03-ec2-workstation.md)
-5. [Cloning the Repository](docs/03b-git-clone.md)
-6. [Containerization & AWS ECR](docs/04-docker-ecr.md)
-7. [Deploying the EKS Cluster](docs/05-eks-cluster.md)
-8. [Applying Kubernetes Manifests](docs/06-kubernetes-deployment.md)
-9. [SSL Offloading & Custom Domain](docs/07-ssl-and-domain.md)
-10. [Automating CI/CD with CodePipeline](docs/09-cicd-codepipeline.md)
-11. [The Interview Guide (End-to-End Flow)](docs/08-interview-guide.md)
+1. [Phase 1: AWS Account & Initial User Setup](docs/01-aws-setup.md)
+2. [Phase 2: VPC & Networking Basics](docs/02-vpc-networking.md)
+3. [Phase 3: IAM Roles & Policies Configuration](docs/03-iam-roles.md)
+4. [Phase 4: Provisioning the Workstation (EC2)](docs/04-ec2-workstation.md)
+5. [Phase 5: GitHub Integration & Code Management](docs/05-git-clone.md)
+6. [Phase 6: Containerization & AWS ECR](docs/06-docker-ecr.md)
+7. [Phase 7: Deploying the EKS Cluster](docs/07-eks-cluster.md)
+8. [Phase 8: Applying Kubernetes Manifests](docs/08-kubernetes-deployment.md)
+9. [Phase 9: SSL Offloading & Custom Domain](docs/09-ssl-and-domain.md)
+10. [Phase 10: Automating CI/CD with CodePipeline](docs/10-cicd-codepipeline.md)
+11. [The Interview Guide (End-to-End Flow)](docs/11-interview-guide.md)
 
 ---
 

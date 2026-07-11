@@ -21,4 +21,4 @@ We created a dedicated IAM User to handle all deployment tasks.
    - Generate an **Access Key ID** and **Secret Access Key** for CLI access later.
 
 ---
-*Next Step: [Configuring IAM Roles & Policies](02-iam-roles.md)*
+*Next Step: [Configuring IAM Roles & Policies](02-vpc-networking.md)*

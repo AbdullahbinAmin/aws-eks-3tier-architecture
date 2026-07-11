@@ -43,4 +43,4 @@ To securely allow our Ubuntu workstation to execute `eksctl` commands and push i
 7. Click **Create role**.
 
 ---
-*Next Step: [Provisioning the Workstation (EC2)](03-ec2-workstation.md)*
+*Next Step: [Provisioning the Workstation (EC2)](04-ec2-workstation.md)*

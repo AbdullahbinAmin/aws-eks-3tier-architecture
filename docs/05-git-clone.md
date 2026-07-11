@@ -38,4 +38,4 @@ git pull origin main
 Now that all the files (`frontend/`, `backend/`, `k8s/`) are successfully on the Ubuntu server, we are ready to build the Docker images!
 
 ---
-*Next Step: [Containerization & AWS ECR](04-docker-ecr.md)*
+*Next Step: [Containerization & AWS ECR](06-docker-ecr.md)*

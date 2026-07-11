@@ -67,4 +67,4 @@ You must configure your Ubuntu server's AWS CLI to authenticate as the `devops-e
 Run `aws eks update-kubeconfig --region eu-north-1 --name my-eks-cluster` again, then run `kubectl get nodes`. You will now be successfully authenticated!
 
 ---
-*Next Step: [Applying Kubernetes Manifests](06-kubernetes-deployment.md)*
+*Next Step: [Applying Kubernetes Manifests](08-kubernetes-deployment.md)*

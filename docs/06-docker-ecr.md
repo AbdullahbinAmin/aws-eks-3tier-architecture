@@ -35,4 +35,4 @@ docker push 857184531197.dkr.ecr.eu-north-1.amazonaws.com/frontend-microservice:
 *Note: The Frontend Dockerfile utilized a multi-stage build. It first compiled the React app using Node.js, and then copied the static `dist/` files into a lightweight `nginx:alpine` container to serve them.*
 
 ---
-*Next Step: [Deploying the EKS Cluster](05-eks-cluster.md)*
+*Next Step: [Deploying the EKS Cluster](07-eks-cluster.md)*
