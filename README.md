@@ -57,7 +57,8 @@ Please follow these guides in order:
 7. [Deploying the EKS Cluster](docs/05-eks-cluster.md)
 8. [Applying Kubernetes Manifests](docs/06-kubernetes-deployment.md)
 9. [SSL Offloading & Custom Domain](docs/07-ssl-and-domain.md)
-10. [The Interview Guide (End-to-End Flow)](docs/08-interview-guide.md)
+10. [Automating CI/CD with CodePipeline](docs/09-cicd-codepipeline.md)
+11. [The Interview Guide (End-to-End Flow)](docs/08-interview-guide.md)
 
 ---
 

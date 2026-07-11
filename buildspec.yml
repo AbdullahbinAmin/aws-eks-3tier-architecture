@@ -1,0 +1,45 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing kubectl..."
+      - curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.30.0/2024-05-12/bin/linux/amd64/kubectl
+      - chmod +x ./kubectl
+      - mv ./kubectl /usr/local/bin/kubectl
+  pre_build:
+    commands:
+      - echo "Logging in to Amazon ECR..."
+      - aws --version
+      - aws ecr get-login-password --region eu-north-1 | docker login --username AWS --password-stdin 857184531197.dkr.ecr.eu-north-1.amazonaws.com
+      - REPOSITORY_URI_BACKEND=857184531197.dkr.ecr.eu-north-1.amazonaws.com/backend-microservice
+      - REPOSITORY_URI_FRONTEND=857184531197.dkr.ecr.eu-north-1.amazonaws.com/frontend-microservice
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=${COMMIT_HASH:=latest}
+  build:
+    commands:
+      - echo "Build started on `date`"
+      - echo "Building the Docker images..."
+      - cd backend
+      - docker build -t $REPOSITORY_URI_BACKEND:latest .
+      - docker tag $REPOSITORY_URI_BACKEND:latest $REPOSITORY_URI_BACKEND:$IMAGE_TAG
+      - cd ../frontend
+      - docker build -t $REPOSITORY_URI_FRONTEND:latest .
+      - docker tag $REPOSITORY_URI_FRONTEND:latest $REPOSITORY_URI_FRONTEND:$IMAGE_TAG
+      - cd ..
+  post_build:
+    commands:
+      - echo "Build completed on `date`"
+      - echo "Pushing the Docker images to ECR..."
+      - docker push $REPOSITORY_URI_BACKEND:latest
+      - docker push $REPOSITORY_URI_BACKEND:$IMAGE_TAG
+      - docker push $REPOSITORY_URI_FRONTEND:latest
+      - docker push $REPOSITORY_URI_FRONTEND:$IMAGE_TAG
+      - echo "Connecting to EKS Cluster..."
+      - aws eks update-kubeconfig --region eu-north-1 --name my-eks-cluster
+      - echo "Deploying to Kubernetes Cluster..."
+      # Dynamically inject the newly built image tag into the Kubernetes manifests
+      - sed -i 's|857184531197.dkr.ecr.eu-north-1.amazonaws.com/backend-microservice:latest|'$REPOSITORY_URI_BACKEND':'$IMAGE_TAG'|g' k8s/backend.yaml
+      - sed -i 's|857184531197.dkr.ecr.eu-north-1.amazonaws.com/frontend-microservice:latest|'$REPOSITORY_URI_FRONTEND':'$IMAGE_TAG'|g' k8s/frontend.yaml
+      - kubectl apply -f k8s/
+      - echo "Deployment successful!"

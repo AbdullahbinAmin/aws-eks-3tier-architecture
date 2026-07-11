@@ -34,11 +34,11 @@ Here is a step-by-step, easy-to-understand script you can use to explain your en
 2. **The Logic Tier:** I deployed the Node.js backend as a `Deployment` and exposed it internally using a `ClusterIP` service.
 3. **The Presentation Tier:** I deployed the React frontend. To expose it to the internet, I used a `LoadBalancer` service, which automatically provisioned an **AWS Classic Load Balancer**. I also had to configure Nginx to act as a **Reverse Proxy** so that frontend API calls were correctly routed to the internal backend service."
 
-## 6. Phase 5: Custom Domain & SSL (The Grand Finale)
-"Finally, I wanted the application to be production-ready.
-- I requested a free public SSL certificate using **AWS Certificate Manager (ACM)**.
-- I registered a free custom domain on `dynv6.com`. Because DNS providers don't allow CNAME records at the root domain, I pinged my AWS Load Balancer to extract its underlying public IPv4 address, and used that for routing.
-- I added special **annotations** to my Kubernetes LoadBalancer YAML file. This instructed AWS to attach the ACM certificate to the Load Balancer and offload HTTPS traffic (Port 443) down to HTTP (Port 80) for my Nginx pods."
+## 6. Phase 6: CI/CD Automation (The Final Touch)
+"Manually deploying code isn't scalable, so I built a fully automated CI/CD pipeline using **AWS CodePipeline** and **AWS CodeBuild**.
+- I integrated the pipeline directly with my GitHub repository.
+- I wrote a `buildspec.yml` file that triggers on every push to the `main` branch. 
+- The pipeline spins up a temporary Ubuntu environment, builds my Docker images, pushes them to Amazon ECR, authenticates with my EKS cluster using an IAM Access Entry, and automatically deploys the updated pods using zero-downtime Kubernetes rollouts."
 
 ## 7. The Conclusion
-"Overall, this project gave me massive hands-on experience with Kubernetes networking, AWS IAM Identity mismatches, Docker multi-stage builds, and DNS propagation troubleshooting. It perfectly mimics a real-world enterprise deployment."
+"Overall, this project gave me massive hands-on experience with Kubernetes networking, AWS IAM Identity mismatches, Docker multi-stage builds, CI/CD automation, and DNS propagation troubleshooting. It perfectly mimics a real-world enterprise deployment."
