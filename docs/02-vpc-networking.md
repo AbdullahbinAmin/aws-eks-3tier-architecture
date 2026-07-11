@@ -19,4 +19,4 @@ Security Groups act as virtual firewalls for instances.
 - **Workstation Security Group:** We manually allowed SSH (Port 22) inbound traffic from our IP address to access the MobaXterm Ubuntu server.
 
 ---
-*Next Step: [IAM Roles & Policies Configuration](02-iam-roles.md)*
+*Next Step: [IAM Roles & Policies Configuration](03-iam-roles.md)*

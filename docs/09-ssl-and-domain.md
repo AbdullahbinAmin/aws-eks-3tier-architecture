@@ -44,3 +44,6 @@ kubectl apply -f frontend.yaml
 ```
 
 **Result:** The application is now fully accessible at `https://learning.dynv6.net` with a Secure Padlock!
+
+---
+*Next Step: [Automating CI/CD with CodePipeline](10-cicd-codepipeline.md)*
