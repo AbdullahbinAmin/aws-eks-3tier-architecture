@@ -14,7 +14,7 @@ A production-grade, highly available, 3-Tier Cloud Directory application deploye
 
 ## 🏗️ Architecture Overview
 
-The architecture consists of three distinct layers deployed across an Amazon VPC using EKS.
+The architecture consists of three distinct layers deployed across a custom Amazon VPC using EKS.
 
 ```mermaid
 graph TD
@@ -49,7 +49,7 @@ To ensure this project is fully reproducible, every single step from creating th
 Please follow these guides in order:
 
 1. [Phase 1: AWS Account & Initial User Setup](docs/01-aws-setup.md)
-2. [Phase 2: VPC & Networking Basics](docs/02-vpc-networking.md)
+2. [Phase 2: VPC & Custom Networking Configuration](docs/02-vpc-networking.md)
 3. [Phase 3: IAM Roles & Policies Configuration](docs/03-iam-roles.md)
 4. [Phase 4: Provisioning the Workstation (EC2)](docs/04-ec2-workstation.md)
 5. [Phase 5: GitHub Integration & Code Management](docs/05-git-clone.md)
@@ -58,7 +58,8 @@ Please follow these guides in order:
 8. [Phase 8: Applying Kubernetes Manifests](docs/08-kubernetes-deployment.md)
 9. [Phase 9: SSL Offloading & Custom Domain](docs/09-ssl-and-domain.md)
 10. [Phase 10: Automating CI/CD with CodePipeline](docs/10-cicd-codepipeline.md)
-11. [The Interview Guide (End-to-End Flow)](docs/11-interview-guide.md)
+11. [Phase 11: Tearing Down & Cost Prevention](docs/11-cleanup-guide.md)
+12. [The Interview Guide (End-to-End Flow)](docs/12-interview-guide.md)
 
 ---
 
