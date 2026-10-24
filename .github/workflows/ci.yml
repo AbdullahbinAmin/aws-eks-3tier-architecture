@@ -1,0 +1,44 @@
+name: EKS 3-Tier CI & Kubernetes Manifest Validation
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  validate-manifests:
+    name: Validate Kubernetes YAML Manifests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Kubeval / Yamllint
+        run: |
+          sudo apt-get update && sudo apt-get install -y yamllint
+          yamllint -d "{extends: relaxed, rules: {line-length: disable}}" k8s/
+          echo "Kubernetes YAML manifests linting passed successfully"
+
+  build-test:
+    name: Container Build Smoke Test
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        tier: [backend, frontend]
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Container Image
+        run: |
+          echo "Building ${{ matrix.tier }}..."
+          docker build \
+            --file ${{ matrix.tier }}/Dockerfile \
+            --tag 3tier/${{ matrix.tier }}:test \
+            ${{ matrix.tier }}

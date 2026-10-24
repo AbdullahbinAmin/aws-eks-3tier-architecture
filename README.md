@@ -1,5 +1,6 @@
 # Cloud Directory - 3-Tier EKS Architecture 🚀
 
+[![CI Validation](https://github.com/AbdullahbinAmin/aws-eks-3tier-architecture/actions/workflows/ci.yml/badge.svg)](https://github.com/AbdullahbinAmin/aws-eks-3tier-architecture/actions)
 [![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
 [![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)](https://aws.amazon.com/)
 [![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)](https://reactjs.org/)
